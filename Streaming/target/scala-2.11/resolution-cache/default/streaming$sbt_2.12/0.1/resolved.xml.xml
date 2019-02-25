@@ -4,7 +4,7 @@
 		module="streaming$sbt_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20190224163116"
+		publication="20190225230445"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 
 import scala.collection.JavaConversions._
 
-class SimpleConsumer(val topic: String) extends Logging {
+class SimpleConsumer() extends Logging {
 
   val props: Properties = createConsumerConfig()
   val consumer = new KafkaConsumer[String, String](props)
@@ -33,8 +33,8 @@ class SimpleConsumer(val topic: String) extends Logging {
     props
   }
 
-  def run(): Unit = {
-    consumer.subscribe(Collections.singletonList(this.topic))
+  def run(topic: String): Unit = {
+    consumer.subscribe(Collections.singletonList(topic))
     Executors.newSingleThreadExecutor.execute(() => {
       while (true) {
         val records = consumer.poll(1000)
@@ -51,7 +51,7 @@ object SimpleConsumer extends App {
   if (args.length == 0) {
     System.out.println("Enter topic name")
   } else {
-    val app = new SimpleConsumer(args(0))
-    app.run()
+    val app = new SimpleConsumer()
+    app.run(args(0))
   }
 }

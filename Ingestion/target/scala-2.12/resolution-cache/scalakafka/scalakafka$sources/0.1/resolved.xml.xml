@@ -4,7 +4,7 @@
 		module="scalakafka$sources"
 		revision="0.1"
 		status="integration"
-		publication="20190223215244"
+		publication="20190225212326"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
@@ -56,10 +56,6 @@
 		</dependency>
 		<dependency org="org.apache.kafka" name="kafka-clients" rev="2.1.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="kafka-clients" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.25" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="slf4j-api" type="src" ext="jar" conf="*" e:classifier="sources"/>
 			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
 		</dependency>
 		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.9.0" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">

@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/project" />
+            <option value="/mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Streaming" />
+            <option value="/mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Streaming/project" />
           </set>
         </option>
         <option name="resolveSbtClassifiers" value="true" />

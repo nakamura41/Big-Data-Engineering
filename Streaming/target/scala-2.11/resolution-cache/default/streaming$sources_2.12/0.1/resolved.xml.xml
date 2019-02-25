@@ -4,7 +4,7 @@
 		module="streaming$sources_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20190224163124"
+		publication="20190225230445"
 	/>
 	<configurations>
 		<conf name="default" visibility="public" description=""/>
@@ -17,24 +17,8 @@
 	<publications>
 	</publications>
 	<dependencies>
-		<dependency org="org.scala-sbt" name="util-position_2.12" rev="1.2.4" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
-			<artifact name="util-position_2.12" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
 		<dependency org="com.eed3si9n" name="shaded-scalajson_2.12" rev="1.0.0-M4" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
 			<artifact name="shaded-scalajson_2.12" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.scala-sbt" name="zinc-ivy-integration_2.12" rev="1.2.5" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
-			<artifact name="zinc-ivy-integration_2.12" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.11.1" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
-			<artifact name="log4j-core" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.spire-math" name="jawn-parser_2.12" rev="0.10.4" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
-			<artifact name="jawn-parser_2.12" type="src" ext="jar" conf="*" e:classifier="sources"/>
 			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
 		</dependency>
 		<dependency org="org.apache.logging.log4j" name="log4j-slf4j-impl" rev="2.11.1" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
@@ -171,10 +155,6 @@
 		</dependency>
 		<dependency org="org.scala-sbt" name="zinc_2.12" rev="1.2.5" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
 			<artifact name="zinc_2.12" type="src" ext="jar" conf="*" e:classifier="sources"/>
-			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
-		</dependency>
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.25" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">
-			<artifact name="slf4j-api" type="src" ext="jar" conf="*" e:classifier="sources"/>
 			<include name="*" type="*" ext="*" conf="" matcher="exact"/>
 		</dependency>
 		<dependency org="org.scala-sbt" name="sbinary_2.12" rev="0.5.0" transitive="false" conf="compile->master(*),compile,runtime(*),runtime,compile(*),master;runtime->master(*),compile,runtime(*),runtime,compile(*),master;test->master(*),compile,runtime(*),runtime,compile(*),master">

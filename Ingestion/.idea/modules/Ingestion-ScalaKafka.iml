@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module external.linked.project.id="ingestion [file:/mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Ingestion/]" external.linked.project.path="/mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Ingestion" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file:///mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Ingestion/target/scala-2.12/classes" />
     <output-test url="file:///mnt/25ccbb0c-8721-461d-aeb4-471fc856153b/Projects/EB5001-Big-Data-Engineering/Ingestion/target/scala-2.12/test-classes" />

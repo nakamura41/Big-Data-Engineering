@@ -6,7 +6,7 @@ import kafka.utils.Logging
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
 import scalaj.http._
 
-class SimpleProducer(val topic: String) extends Logging {
+class SimpleProducer() extends Logging {
 
   val props: Properties = createProducerConfig()
   val producer = new KafkaProducer[String, String](props)
@@ -24,8 +24,7 @@ class SimpleProducer(val topic: String) extends Logging {
     props
   }
 
-  def run(stockTicker: String): Unit = {
-    val topic: String = this.topic
+  def run(topic: String, stockTicker: String): Unit = {
     val timestamp: Long = System.currentTimeMillis
     val stockUrl: String = s"https://api.iextrading.com/1.0/stock/$stockTicker/quote"
     val stockId: String = s"$stockTicker-$timestamp"
@@ -43,8 +42,8 @@ class SimpleProducer(val topic: String) extends Logging {
 
 object SimpleProducer extends App {
   if (args.length == 2) {
-    val app = new SimpleProducer(args(0))
-    app.run(args(1))
+    val app = new SimpleProducer()
+    app.run(args(0), args(1))
   } else {
     System.out.println("Enter topic name and stock ticker")
   }

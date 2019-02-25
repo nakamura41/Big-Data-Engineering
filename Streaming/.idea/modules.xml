@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Streaming.iml" filepath="$PROJECT_DIR$/.idea/modules/Streaming.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Streaming-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Streaming-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Spark Kafka Project.iml" filepath="$PROJECT_DIR$/.idea/modules/Spark Kafka Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Spark Kafka Project-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Spark Kafka Project-build.iml" />
     </modules>
   </component>
 </project>

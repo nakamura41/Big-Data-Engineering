@@ -1,12 +1,7 @@
-name := "Streaming"
+name := "Spark Kafka Project"
+version := "1.0"
+scalaVersion := "2.10.5"
 
-version := "0.1"
-
-scalaVersion := "2.11.0"
-
-libraryDependencies += "org.apache.spark" %% "spark-core" % "2.4.0"
-
-libraryDependencies += "org.apache.spark" %% "spark-streaming" % "2.4.0"
-
-// https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-10
-libraryDependencies += "org.apache.spark" %% "spark-streaming-kafka-0-10" % "2.4.0"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "1.6.0"
+libraryDependencies += "org.apache.spark" %% "spark-streaming" % "1.6.0"
+libraryDependencies += "org.apache.spark" %% "spark-streaming-kafka" % "1.6.0"
