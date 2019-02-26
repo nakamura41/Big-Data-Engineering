@@ -1,4 +1,4 @@
-name := "Spark Kafka Project"
+name := "Streaming-Spark"
 version := "1.0"
 scalaVersion := "2.10.5"
 
