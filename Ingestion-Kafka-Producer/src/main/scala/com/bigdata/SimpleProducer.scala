@@ -28,11 +28,15 @@ class SimpleProducer() extends Logging {
     val timestamp: Long = System.currentTimeMillis
     val stockUrl: String = s"https://api.iextrading.com/1.0/stock/$stockTicker/quote"
     val stockId: String = s"$stockTicker-$timestamp"
+
     val response: HttpResponse[String] = Http(stockUrl)
       .header("Content-Type", "application/json")
       .header("Charset", "UTF-8")
       .option(HttpOptions.readTimeout(10000)).asString
+
     System.out.println(s"Publish $stockTicker stock quote: id $stockId")
+    System.out.println(response.body)
+
     producer.send(new ProducerRecord[String, String](topic, stockId, response.body))
     System.out.println("Message sent successfully")
     producer.close()
