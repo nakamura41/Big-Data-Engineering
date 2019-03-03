@@ -1,13 +1,14 @@
 package com.bigdata
 
+import spray.json._
+import DefaultJsonProtocol._
+
 import org.apache.log4j.{Level, Logger}
-
 import org.apache.spark.internal.Logging
-
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka010._
-import org.apache.kafka.clients.consumer.ConsumerConfig
+import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.serialization.StringDeserializer
 
 object StreamingExample extends Logging {
@@ -52,7 +53,11 @@ class KafkaStockStreaming() {
       LocationStrategies.PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](topicsSet, kafkaParams))
 
-    val lines = messages.map(_.value)
+    val lines = messages.map((record: ConsumerRecord[String, String]) => {
+      val stockRecord: JsObject = record.value.parseJson.asJsObject
+      stockRecord
+    })
+
     lines.print()
 
     // Start the computation
