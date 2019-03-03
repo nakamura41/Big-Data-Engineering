@@ -28,6 +28,6 @@ object KafkaStockStreaming extends App {
     val app = new KafkaStockStreaming()
     app.run(args(0), args(1), args(2), args(3))
   } else {
-    System.err.println("Usage: KafkaWordCount <zkQuorum><group> <topics> <numThreads>")
+    System.err.println("Usage  : KafkaWordCount <zkQuorum> <group> <topics> <numThreads>\nExample: KafkaWordCount localhost:9092 group1 stock-quote 2")
   }
 }
