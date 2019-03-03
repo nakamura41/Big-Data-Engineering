@@ -1,0 +1,17 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/testscala_2.11-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	shakespeare.txt[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/shakespeare.txt[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HelloScala$$anonfun$main$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pierlim/IdeaProjects/TestScala/target/scala-2.11/classes/HelloScala$$anonfun$main$1.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
