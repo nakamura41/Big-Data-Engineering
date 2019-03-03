@@ -8,11 +8,23 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 
 import scala.collection.JavaConversions._
 
+
 class SimpleConsumer() extends Logging {
 
   val props: Properties = createConsumerConfig()
   val consumer = new KafkaConsumer[String, String](props)
   var executor: ExecutorService = _
+
+  class ConsumerThread(consumer: KafkaConsumer[String, String]) extends Runnable {
+    def run(): Unit = {
+      while (true) {
+        val records = consumer.poll(1000)
+        for (record <- records.iterator()) {
+          System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset())
+        }
+      }
+    }
+  }
 
   def shutdown(): Unit = {
     if (consumer != null)
@@ -35,14 +47,8 @@ class SimpleConsumer() extends Logging {
 
   def run(topic: String): Unit = {
     consumer.subscribe(Collections.singletonList(topic))
-    Executors.newSingleThreadExecutor.execute(() => {
-      while (true) {
-        val records = consumer.poll(1000)
-        for (record <- records.iterator()) {
-          System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset())
-        }
-      }
-    })
+    val consumerThread = new ConsumerThread(consumer)
+    Executors.newSingleThreadExecutor.execute(consumerThread)
   }
 
 }
