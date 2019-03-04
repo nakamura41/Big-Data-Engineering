@@ -3,7 +3,7 @@
 ## Instruction
 [Start Kafka](https://github.com/nakamura41/EB5001-Big-Data-Engineering/blob/master/Kafka.md)
 
-### Example build.sbt configuration file (that works on BEAD vm - EVERYONE pls use Spark 2)  
+### Example build.sbt configuration file (that works on BEAD vm - SPARK2.2)  
 ```
 name := "TestScala"
 
