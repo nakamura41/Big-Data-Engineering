@@ -1,15 +1,14 @@
 package com.bigdata
 
-import spray.json._
-import DefaultJsonProtocol._
-
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.internal.Logging
-import org.apache.spark.SparkConf
-import org.apache.spark.streaming._
-import org.apache.spark.streaming.kafka010._
+import com.datastax.spark.connector.cql.CassandraConnector
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.log4j.{Level, Logger}
+import org.apache.spark.SparkConf
+import org.apache.spark.internal.Logging
+import org.apache.spark.streaming._
+import org.apache.spark.streaming.kafka010._
+import spray.json._
 
 object StreamingExample extends Logging {
   def setStreamingLogLevels() {
@@ -35,6 +34,7 @@ class KafkaStockStreaming() {
     val sparkConf = new SparkConf().setMaster("local[2]").setAppName("KafkaStockStreaming")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
+    val connector = CassandraConnector(sparkConf)
 
     localLogger.info("brokers:" + brokers)
     localLogger.info("groupId:" + groupId)
@@ -48,17 +48,34 @@ class KafkaStockStreaming() {
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
       ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer])
 
-    val messages = KafkaUtils.createDirectStream[String, String](
+    val events = KafkaUtils.createDirectStream[String, String](
       ssc,
       LocationStrategies.PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](topicsSet, kafkaParams))
+      .map((record: ConsumerRecord[String, String]) => {
+        record.value.parseJson.toString
+      }).foreachRDD(rdd => rdd.foreach(json =>
+      connector.withSessionDo(session => {
+        System.out.println(json)
+        val prepared = session.prepare("INSERT INTO bigdata.stock_quote JSON '" + json.toString + "'")
+        session.execute(prepared.bind())
+      })
 
-    val lines = messages.map((record: ConsumerRecord[String, String]) => {
-      val stockRecord: JsObject = record.value.parseJson.asJsObject
-      stockRecord
-    })
+    ))
 
-    lines.print()
+
+
+    //    messagesDS.map((record: ConsumerRecord[String, String]) => {
+    //      val stockRecord = record.value.parseJson.asJsObject()
+    //    }).saveToCassandra("bigdata", "stock_quote", SomeColumns(""))
+
+    //    lines.saveToCassandra("bigdata", "stock_quote")
+
+    //    lines.foreachRDD { rdd =>
+    //      rdd.foreach { record =>
+    //        System.out.println(record.getFields("companyName"))
+    //      }
+    //    }
 
     // Start the computation
     ssc.start()
