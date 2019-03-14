@@ -31,8 +31,8 @@ class KafkaStockStreaming() {
 
     StreamingExample.setStreamingLogLevels()
 
-    val sparkConf = new SparkConf().setMaster("local[2]").setAppName("KafkaStockStreaming")
-    val ssc = new StreamingContext(sparkConf, Seconds(2))
+    val sparkConf = new SparkConf().setAppName("KafkaStockStreaming")
+    val ssc = new StreamingContext(sparkConf, Seconds(1))
     ssc.checkpoint("checkpoint")
     val connector = CassandraConnector(sparkConf)
 
