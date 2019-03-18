@@ -1,0 +1,10 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/pierlim/IdeaProjects/TestScala/src/main/scala/HelloScala.scala:1:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.{SparkConf, SparkContext}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/pierlim/IdeaProjects/TestScala/src/main/scala/HelloScala.scala:7:20: not found: type SparkConf[0m
+[0m[[0m[31merror[0m] [0m[0m    val conf = new SparkConf()[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/pierlim/IdeaProjects/TestScala/src/main/scala/HelloScala.scala:10:18: not found: type SparkContext[0m
+[0m[[0m[31merror[0m] [0m[0m    val sc = new SparkContext(conf)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

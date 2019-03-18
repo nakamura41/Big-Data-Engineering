@@ -1,4 +1,7 @@
-checkpoint
-target
 out
+target
 .idea
+classes
+**META-INF**
+
+checkpoint
