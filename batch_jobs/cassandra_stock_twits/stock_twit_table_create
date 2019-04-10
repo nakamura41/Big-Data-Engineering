@@ -1,26 +1,27 @@
 DROP TABLE bigdata.stock_twits;
 
 CREATE TABLE bigdata.stock_twits (
-  symbol text PRIMARY KEY
-  created_at timestamp CLUSTERING KEY,
-  id int,
+  symbol text,
+  created_at double,
+  id double,
   body text,
-  user.followers int,
-  user.username text,
-  user.name text,
-  likes.total int,
-  entities.sentiment.basic text	
+  user_followers double,
+  user_username text,
+  user_name text,
+  likes_total double,
+  entities_sentiment_basic text	,
+  PRIMARY KEY (symbol, created_at)
 );
 
 // Sample insert script using JSON
 INSERT INTO bigdata.stock_twits JSON '{
  "symbol": "AAPL",
- "created_at": "2019-03-18T11:34:17Z",
+ "created_at": 1552078800525,
  "id": 157399223,
  "body": "$SPY $aapl all news is positive \ud83d\ude1c\ud83d\ude02! Think \ud83e\udd14",
- "user.followers": 118,
- "user.username": "MakeDD",
- "user.name": "USA",
- "likes.total": 2,
-  "entities.sentiment.basic": "Bearish"	
+ "user_followers": 118,
+ "user_username": "MakeDD",
+ "user_name": "USA",
+ "likes_total": 2,
+  "entities_sentiment_basic": "Bearish"	
 }';
