@@ -12,16 +12,3 @@ CREATE TABLE bigdata.stock_twits (
   entities_sentiment_basic text	,
   PRIMARY KEY (symbol, created_at)
 );
-
-// Sample insert script using JSON
-INSERT INTO bigdata.stock_twits JSON '{
- "symbol": "AAPL",
- "created_at": 1552078800525,
- "id": 157399223,
- "body": "$SPY $aapl all news is positive \ud83d\ude1c\ud83d\ude02! Think \ud83e\udd14",
- "user_followers": 118,
- "user_username": "MakeDD",
- "user_name": "USA",
- "likes_total": 2,
-  "entities_sentiment_basic": "Bearish"	
-}';

@@ -14,15 +14,22 @@ CREATE TABLE bigdata.stock_twits (
    ...   PRIMARY KEY (symbol, created_at)
    ... );
 '''
+
+# pip install cassandra-driver
+
+
 import os
 import json
 import datetime
+from cassandra.cluster import Cluster
 
 epoch = datetime.datetime.utcfromtimestamp(0)
 
 def unix_time_millis(dt):
     return int((dt - epoch).total_seconds() * 1000)
 
+cluster = Cluster()
+session = cluster.connect('bigdata')
 
 twits_location = "twits"
 for f in os.listdir(twits_location):
@@ -47,5 +54,18 @@ for f in os.listdir(twits_location):
             required_details["likes_total"] = m["likes"].get("total") if m.get("likes") else None
             required_details["entities_sentiment_basic"] = m["entities"]["sentiment"].get("basic") if m.get("entities") and m.get("entities").get("sentiment") else None
             print(required_details)
+
+            try:
+                # insert into Cassandra
+                session.execute(
+                """
+                INSERT INTO stock_twits (symbol, created_at, id, body, user_followers, user_username, user_name, likes_total, entities_sentiment_basic)
+                VALUES (%(symbol)s, %(created_at)s, %(id)s, %(body)s, %(user_followers)s, %(user_username)s, %(user_name)s, %(likes_total)s, %(entities_sentiment_basic)s)
+                """, 
+                required_details
+                )
+                print("Inserted record...")
+            except Exception as e:
+                print("An error occurred while inserting: " + str(e))
 
 
