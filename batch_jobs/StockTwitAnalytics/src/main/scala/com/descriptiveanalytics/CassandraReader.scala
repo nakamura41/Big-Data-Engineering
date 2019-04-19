@@ -2,9 +2,9 @@ package com.descriptiveanalytics
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
-import java.util.Date
-import org.apache.spark.sql.functions.expr
 import org.apache.spark.sql.functions.from_unixtime
+
+import org.apache.spark.sql.functions._
 
 
 object CassandraReader{
@@ -32,27 +32,21 @@ object CassandraReader{
    // filter by the stock symbol
    val aaplDF = df.filter(df("symbol") === "AAPL")
 
-
-   aaplDF
+   // create intermediate (dummy) columns to store the date and hour from the created_at field
+   val aaplDFWithDummyCols = aaplDF
      .withColumn("created_at_hour", from_unixtime($"created_at"/1000, "HH"))
      .withColumn("created_at_date", from_unixtime($"created_at"/1000, "yyyy-MM-dd"))
-     .show()
 
-   //val dateConverterExpr = "new Date(created_at)"
-
-   // create intermediate (dummy) columns to store the date and hour from the created_at field
-   //val d = new Date(1513714678 * 1000L)
-
-   //val getDate: Double => String = Date(_).getTime()
-
-   //aaplDF.withColumn("created_at_date", _ => new Date($"created_at")).show()
-
+   // aaplDFWithDummyCols.show()
 
    // group by dummy_date (text), dummy_hour, entities_sentiment_basic
-   // aaplDF.groupBy("entities_sentiment_basic").count().show()
-
    // get aggregates for counts, likes_total, user_followers
-
+   aaplDFWithDummyCols.groupBy("created_at_date", "created_at_hour", "entities_sentiment_basic")
+     .agg(
+       count($"entities_sentiment_basic").alias("num_tweets"),
+       sum($"likes_total").alias("total_likes"),
+       sum($"user_followers").alias("total_followers"))
+     .show()
 
    // save the results in the new table in Cassandra
    /*
