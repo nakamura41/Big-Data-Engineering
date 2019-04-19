@@ -1,17 +1,26 @@
 package com.descriptiveanalytics
-import com.datastax.spark.connector._
-import org.apache.spark.sql.cassandra._
-import org.apache.spark._
-import org.apache.spark.SparkContext._
+
+import org.apache.spark.sql.SparkSession
+
 
 object CassandraReader{
  def main(args: Array[String]): Unit ={
-   val conf = new SparkConf().setAppName("CassandraReader").setMaster("local[1]")
 
-   val sc = new SparkContext(conf)
-   val rdd = sc.cassandraTable("bigdata", "stock_twits")
-   println(rdd.count)
-   println(rdd.first)
-   println(rdd.map(_.getInt("likes_total")).sum)
+
+   val sparkSession = SparkSession.builder.appName("CassandraReader").
+     config("spark.cassandra.connection.host", "18.136.251.110").
+     config("spark.cassandra.connection.port", "9042").master("local[1]").getOrCreate()
+
+   import sparkSession.implicits._
+
+   val df = sparkSession
+     .read
+     .format("org.apache.spark.sql.cassandra")
+     .options(Map( "table" -> "stock_twits", "keyspace" -> "bigdata" ))
+     .load()
+
+   //print(df.show(20, false))
+   df.collect.foreach(println)
+
  }
 }

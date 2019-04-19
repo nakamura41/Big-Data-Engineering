@@ -4,7 +4,7 @@
 		module="stocktwitanalytics_2.11"
 		revision="0.1"
 		status="integration"
-		publication="20190410235946"
+		publication="20190419150714"
 	>
 		<description>
 		StockTwitAnalytics
@@ -32,7 +32,8 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default);compile->default(compile)"/>
-		<dependency org="org.apache.spark" name="spark-core_2.11" rev="1.6.2" conf="compile->default(compile)"/>
-		<dependency org="com.datastax.spark" name="spark-cassandra-connector_2.11" rev="2.4.0" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.3.1" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.3.1" conf="compile->default(compile)"/>
+		<dependency org="com.datastax.spark" name="spark-cassandra-connector_2.11" rev="2.3.1" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
