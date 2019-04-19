@@ -21,6 +21,7 @@ object CassandraReader{
 
    //print(df.show(20, false))
    df.collect.foreach(println)
+   df.printSchema()
 
  }
 }
