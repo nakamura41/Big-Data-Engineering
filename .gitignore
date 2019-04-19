@@ -2,3 +2,4 @@
 *.log
 stocks/
 twits/
+.idea
