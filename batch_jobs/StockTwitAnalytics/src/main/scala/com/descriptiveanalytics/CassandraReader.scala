@@ -46,6 +46,8 @@ object CassandraReader{
        count($"entities_sentiment_basic").alias("num_tweets"),
        sum($"likes_total").alias("total_likes"),
        sum($"user_followers").alias("total_followers"))
+     .na.fill(0, Array("num_tweets", "total_likes", "total_followers"))
+     .na.fill("Neutral", Array("entities_sentiment_basic"))
      .show()
 
    // save the results in the new table in Cassandra
