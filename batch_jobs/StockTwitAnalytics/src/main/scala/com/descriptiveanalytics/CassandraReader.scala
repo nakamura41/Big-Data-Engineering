@@ -34,21 +34,33 @@ object CassandraReader{
 
    // create intermediate (dummy) columns to store the date and hour from the created_at field
    val aaplDFWithDummyCols = aaplDF
-     .withColumn("created_at_hour", from_unixtime($"created_at"/1000, "HH"))
-     .withColumn("created_at_date", from_unixtime($"created_at"/1000, "yyyy-MM-dd"))
+     .withColumn("hour", from_unixtime($"created_at"/1000, "HH"))
+     .withColumn("date", from_unixtime($"created_at"/1000, "yyyy-MM-dd"))
 
    // aaplDFWithDummyCols.show()
+   val sysTime = System.currentTimeMillis / 1000
 
    // group by dummy_date (text), dummy_hour, entities_sentiment_basic
    // get aggregates for counts, likes_total, user_followers
-   aaplDFWithDummyCols.groupBy("created_at_date", "created_at_hour", "entities_sentiment_basic")
+   val aaplDFWithAggregatedCols = aaplDFWithDummyCols.groupBy("date", "hour", "entities_sentiment_basic")
      .agg(
        count($"entities_sentiment_basic").alias("num_tweets"),
        sum($"likes_total").alias("total_likes"),
        sum($"user_followers").alias("total_followers"))
      .na.fill(0, Array("num_tweets", "total_likes", "total_followers"))
      .na.fill("Neutral", Array("entities_sentiment_basic"))
-     .show()
+     .withColumn("symbol", lit("AAPL"))
+     .withColumn("job_at", lit(sysTime))
+
+   aaplDFWithAggregatedCols.show()
+   aaplDFWithAggregatedCols.printSchema()
+
+   /*
+   aaplDFWithAggregatedCols.write.format("org.apache.spark.sql.cassandra")
+     .options(Map("keyspace" -> "bigdata", "table" -> "stock_twits_aggregate"))
+     .mode(SaveMode.Append)
+     .save()
+     */
 
    // save the results in the new table in Cassandra
    /*
