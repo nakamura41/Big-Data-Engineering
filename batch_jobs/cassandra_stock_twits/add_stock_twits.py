@@ -28,7 +28,7 @@ epoch = datetime.datetime.utcfromtimestamp(0)
 def unix_time_millis(dt):
     return int((dt - epoch).total_seconds() * 1000)
 
-cluster = Cluster()
+cluster = Cluster(['18.136.251.110'])
 session = cluster.connect('bigdata')
 
 twits_location = "twits"
