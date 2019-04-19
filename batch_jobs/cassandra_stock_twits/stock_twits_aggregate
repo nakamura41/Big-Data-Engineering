@@ -1,0 +1,16 @@
+CREATE TABLE bigdata.stock_twits_aggregate (
+      symbol text,
+      job_at double,
+      date text,
+      hour int,
+      total_bullish_tweets int,
+      total_bearish_tweets int,
+      total_tweets int,
+      total_bullish_likes int,
+      total_bearish_likes int,
+      total_likes int,
+      total_bullish_followers int,
+      total_bearish_followers int,
+      total_followers int,
+      PRIMARY KEY (job_at, symbol)
+);
