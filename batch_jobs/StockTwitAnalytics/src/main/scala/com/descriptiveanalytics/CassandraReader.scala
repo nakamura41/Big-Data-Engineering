@@ -4,6 +4,7 @@ import org.apache.spark.sql.{SaveMode, SparkSession}
 
 import java.util.Date
 import org.apache.spark.sql.functions.expr
+import org.apache.spark.sql.functions.from_unixtime
 
 
 object CassandraReader{
@@ -31,12 +32,20 @@ object CassandraReader{
    // filter by the stock symbol
    val aaplDF = df.filter(df("symbol") === "AAPL")
 
-   val dateConverterExpr = "new Date(created_at)"
+
+   aaplDF
+     .withColumn("created_at_hour", from_unixtime($"created_at"/1000, "HH"))
+     .withColumn("created_at_date", from_unixtime($"created_at"/1000, "yyyy-MM-dd"))
+     .show()
+
+   //val dateConverterExpr = "new Date(created_at)"
 
    // create intermediate (dummy) columns to store the date and hour from the created_at field
-   val d = new Date(1513714678 * 1000L)
+   //val d = new Date(1513714678 * 1000L)
 
-   aaplDF.withColumn("created_at_date", expr(dateConverterExpr)).show()
+   //val getDate: Double => String = Date(_).getTime()
+
+   //aaplDF.withColumn("created_at_date", _ => new Date($"created_at")).show()
 
 
    // group by dummy_date (text), dummy_hour, entities_sentiment_basic
