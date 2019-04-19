@@ -1,4 +1,5 @@
 CREATE TABLE bigdata.stock_twits_aggregate (
+      id bigint,
       symbol text,
       job_at bigint,
       date text,
@@ -7,5 +8,5 @@ CREATE TABLE bigdata.stock_twits_aggregate (
       num_tweets bigint,
       total_likes double,
       total_followers double,
-      PRIMARY KEY (job_at, symbol)
+      PRIMARY KEY (job_at, id)
 );

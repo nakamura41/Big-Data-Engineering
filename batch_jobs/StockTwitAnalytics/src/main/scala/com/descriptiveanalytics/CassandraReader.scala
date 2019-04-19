@@ -49,27 +49,19 @@ object CassandraReader{
        sum($"user_followers").alias("total_followers"))
      .na.fill(0, Array("num_tweets", "total_likes", "total_followers"))
      .na.fill("Neutral", Array("entities_sentiment_basic"))
+     .withColumn("id", monotonically_increasing_id())
      .withColumn("symbol", lit("AAPL"))
      .withColumn("job_at", lit(sysTime))
 
    aaplDFWithAggregatedCols.show()
    aaplDFWithAggregatedCols.printSchema()
 
-   /*
-   aaplDFWithAggregatedCols.write.format("org.apache.spark.sql.cassandra")
-     .options(Map("keyspace" -> "bigdata", "table" -> "stock_twits_aggregate"))
-     .mode(SaveMode.Append)
-     .save()
-     */
-
    // save the results in the new table in Cassandra
-   /*
-   val dfprev = aaplDF.select("se","hu")
-   dfprev.write.format("org.apache.spark.sql.cassandra")
-     .options(Map("keyspace"->"bigdata","table"->"stock_twits_aggregate"))
-     .mode(SaveMode.Append)
+   aaplDFWithAggregatedCols.
+     write.
+     format("org.apache.spark.sql.cassandra")
+     .options(Map("keyspace" -> "bigdata", "table" -> "stock_twits_aggregate"))
      .save()
-     */
 
  }
 }
