@@ -2,6 +2,7 @@ package com
 import java.util.Calendar
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
+import org.apache.spark.SparkContext
 
 
 object Archival {
@@ -34,8 +35,14 @@ object Archival {
     val df_month_year_unix = df_month_year
       .withColumn("U_TS", unix_timestamp($"date_unix"))
 
+    val sc: SparkContext
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
     val df_for_archival = df_month_year_unix.filter($"U_TS" <= ten_years_earlier)
-    df_for_archival.write.format("parquet").mode("Append").parquet('hdfs://sparknode01.localdomain:9000/archival'))
+
+    import sqlContext.implicits._
+
+    sqlcontext.setConf(“spark.sql.parquet.compression.codec”, “snappy”)
+    df_for_archival.write.format("parquet").mode("Append").option("compression","s").parquet('hdfs://sparknode01.localdomain:9000/archival'))
 
 
 
