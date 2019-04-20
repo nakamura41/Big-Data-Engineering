@@ -9,8 +9,6 @@ import scalaj.http._
 import com.redis._
 import org.json4s._
 import org.json4s.native.JsonMethods._
-import org.json.JSONObject
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
 
@@ -32,21 +30,54 @@ class StockTwitsProducer() extends Logging {
   }
 
   def getDouble(value: JValue): Double = {
-    if (value.values.toString == "None") 0 else value.values.toString.toDouble
+    value match {
+      case JNull => 0
+      case JNothing => 0
+      case JDouble(i) => i.doubleValue()
+    }
   }
 
   def getInteger(value: JValue): Int = {
-    if (value.values.toString == "None") 0 else value.values.toString.toInt
+    value match {
+      case JNull => 0
+      case JNothing => 0
+      case JInt(i) => i.intValue()
+    }
   }
 
   def getString(value: JValue): String = {
-    value.values.toString
+    value match {
+      case JNull => ""
+      case JNothing => ""
+      case JString(i) => i.toString
+    }
+  }
+
+  def getLatestStockId(stockTicker: String, redisHost: String, database: Integer): String = {
+    val redis = new RedisClient(redisHost, port = 6379, database = database)
+    val value: Option[String] = redis.get(stockTicker)
+    value match {
+      case Some(i) => i
+      case None => "0"
+    }
+  }
+
+  def setLatestStockId(id: String, stockTicker: String, redisHost: String, database: Integer): Unit = {
+    val redis = new RedisClient(redisHost, port = 6379, database = database)
+    redis.set(stockTicker, id)
   }
 
   def run(topic: String, stockTicker: String, redisHost: String): Unit = {
-    val redis = new RedisClient(redisHost, port = 6379, database = 0)
+    val REDIS_DATABASE = 1
+
     val timestamp: Long = System.currentTimeMillis
-    val stockUrl: String = s"https://api.stocktwits.com/api/2/streams/symbol/$stockTicker.json"
+
+    val latestStockId = getLatestStockId(stockTicker, redisHost, REDIS_DATABASE)
+    var stockUrl: String = s"https://api.stocktwits.com/api/2/streams/symbol/$stockTicker.json"
+    if (latestStockId != "0") {
+      stockUrl = stockUrl + s"?since=$latestStockId"
+    }
+    System.out.println(s"Pull stock tweets from $stockUrl")
 
     val response: HttpResponse[String] = Http(stockUrl)
       .header("Content-Type", "application/json")
@@ -57,8 +88,8 @@ class StockTwitsProducer() extends Logging {
     val jsonResponse = (json \ "response" \ "status").values
     if (jsonResponse == 200) {
       val jsonCursor = json \ "cursor"
-      val JInt(jsonSince) = jsonCursor \ "since"
-      val JInt(jsonMax) = jsonCursor \ "max"
+      val jsonSince: Int = getInteger(jsonCursor \ "since")
+      val jsonMax: Int = getInteger(jsonCursor \ "max")
       val since: BigInt = if (jsonSince > jsonMax) jsonMax else jsonSince
       val max: BigInt = if (jsonSince > jsonMax) jsonSince else jsonMax
 
@@ -99,6 +130,11 @@ class StockTwitsProducer() extends Logging {
         System.out.println(s"Publish $stockTicker stock tweets: id $stockId")
       }
       System.out.println("Message sent successfully")
+
+      // update latest redis
+      if (max > latestStockId.toInt) {
+        setLatestStockId(max.toString, stockTicker, redisHost, REDIS_DATABASE)
+      }
 
     } else {
       logger.error("Failed to get response from StockTwits API")

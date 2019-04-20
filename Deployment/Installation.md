@@ -18,3 +18,7 @@ docker run --name redis-server --network cda -v /mnt/data/var/lib/redis/data:/da
 sudo apt-get install redis -y
 docker run -it --network cda --rm redis:5.0.4 redis-cli -h localhost
 ```
+
+```bash
+docker run -it --network cda --rm hseeberger/scala-sbt:latest redis-cli -h localhost
+```
