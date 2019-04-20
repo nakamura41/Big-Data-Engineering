@@ -26,7 +26,8 @@ class StockQuotesProducer() extends Logging {
 
   def run(topic: String, stockTicker: String): Unit = {
     val timestamp: Long = System.currentTimeMillis
-    val stockUrl: String = s"https://api.iextrading.com/1.0/stock/$stockTicker/quote"
+    val stockUrl:String = s"https://api.iextrading.com/1.0/stock/$stockTicker/chart/date/20190418"
+    // val stockUrl: String = s"https://api.iextrading.com/1.0/stock/$stockTicker/quote"
     val stockId: String = s"$stockTicker-$timestamp"
 
     val response: HttpResponse[String] = Http(stockUrl)
