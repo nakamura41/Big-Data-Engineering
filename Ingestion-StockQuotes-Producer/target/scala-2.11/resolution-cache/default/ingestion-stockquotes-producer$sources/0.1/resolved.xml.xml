@@ -4,7 +4,7 @@
 		module="ingestion-stockquotes-producer$sources"
 		revision="0.1"
 		status="integration"
-		publication="20190420131951"
+		publication="20190420151049"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

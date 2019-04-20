@@ -61,6 +61,7 @@ object CassandraReader{
      write.
      format("org.apache.spark.sql.cassandra")
      .options(Map("keyspace" -> "bigdata", "table" -> "stock_twits_aggregate"))
+     .mode(SaveMode.Append)
      .save()
 
  }
