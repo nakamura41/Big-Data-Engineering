@@ -9,6 +9,8 @@ import datetime
 # offset must be >=0 and less than MAX_OFFSET
 MAX_OFFSET = 390
 
+TOPIC_NAME = "stockquotes"
+
 link = "https://api.iextrading.com/1.0/stock/AAPL/chart/date/{0}"
 
 def get_stock_details(date_val):
@@ -31,6 +33,8 @@ def get_stock_details_for_minute(stock_details, offset):
     required_record = stock_details[offset]
     print(required_record)
 
+    return required_record
+
 
 
 if __name__ == "__main__":
@@ -44,10 +48,18 @@ if __name__ == "__main__":
     if stock_details and len(stock_details) > 0:
         stock_details = stock_details
 
-        get_stock_details_for_minute(stock_details, 390)
+        producer = KafkaProducer(bootstrap_servers=['localhost:9092'], value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        for e in range(MAX_OFFSET):
+            data = get_stock_details_for_minute(stock_details, e)
+            producer.send(TOPIC_NAME, value=data)
+            print("Pushed for offset: {0}".format(e))
+            sleep(10)
     else:
         print("No stock details")
     # print(stock_details)
+
+
 
 
 
