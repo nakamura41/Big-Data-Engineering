@@ -111,8 +111,9 @@ class StockTwitsProducer() extends Logging {
         val jsonUserName: String = getString(message \ "user" \ "name")
         val jsonLikesTotal: Int = getInteger(message \ "likes" \ "total")
         val jsonEntitiesSentimentBasic: String = getString(message \ "entities" \ "sentiment" \ "basic")
-        val jsonSourceId: Int = getInteger(message \ "source" \ "id")
 
+        jsonMap.put("symbol", stockTicker)
+        jsonMap.put("created_at", System.currentTimeMillis)
         jsonMap.put("id", jsonId)
         jsonMap.put("body", jsonBody)
         jsonMap.put("user_followers", jsonUserFollowers)
@@ -120,7 +121,6 @@ class StockTwitsProducer() extends Logging {
         jsonMap.put("user_name", jsonUserName)
         jsonMap.put("likes_total", jsonLikesTotal)
         jsonMap.put("entities_sentiment_basic", jsonEntitiesSentimentBasic)
-        jsonMap.put("source_id", jsonSourceId)
 
         val gsonMapBuilder = new GsonBuilder
         val gsonObject = gsonMapBuilder.create

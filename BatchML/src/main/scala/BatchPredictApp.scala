@@ -7,23 +7,23 @@ import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.types.{BooleanType, FloatType, IntegerType, LongType, StringType, StructField, StructType}
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
-object BatchPredict {
-  def main(args: Array[String]): Unit = {
+class BatchPredictApp() {
 
+  def run(host: String, port: String): Unit = {
+
+    print("Host: " + host)
+    print("Port: " + port)
     val conf = new SparkConf()
     conf.setMaster("local") // run locally, rather than in distributed mode
-    conf.setAppName("BatchPredict")
-    //val sc = new SparkContext(conf) # SparkContext will be deprecrated
+    conf.setAppName("BatchPredictApp")
 
-    //    val spark = SparkSession
-    //      .builder
-    //      .appName("BatchPredict")
-    //      .config("spark.master", "local")
-    //      .getOrCreate()
+//    val sparkSession = SparkSession.builder.appName("BatchPredict").
+//      config("spark.cassandra.connection.host", host).
+//      config("spark.cassandra.connection.port", port).master("local").getOrCreate()
 
-    val sparkSession = SparkSession.builder.appName("BatchPredict").
-      config("spark.cassandra.connection.host", "18.136.251.110").
-      config("spark.cassandra.connection.port", "9042").master("local").getOrCreate()
+    val sparkSession = SparkSession.builder.appName("BatchPredictApp").
+      config("spark.cassandra.connection.host", host).
+      config("spark.cassandra.connection.port", port).master("local").getOrCreate()
 
     import sparkSession.implicits._
     val df = sparkSession
@@ -59,13 +59,7 @@ object BatchPredict {
     val rf = new RandomForestRegressor()
       .setLabelCol("marketaverage")
       .setFeaturesCol("features")
-    ////
-    //    // Chain indexer and forest in a Pipeline.
-    //    //    val pipeline = new Pipeline()
-    //    //      .setStages(Array(featureIndexer, rf))
-    //
-    //    // Train model. This also runs the indexer.
-    //    //val model = pipeline.fit(trainingData)
+
     val model = rf.fit(trainingData)
     // Make predictions.
     var predictions = model.transform(testData)
@@ -101,15 +95,10 @@ object BatchPredict {
     predictions = predictions.withColumn("symbol", lit("AAPL"))
       .withColumn("id", monotonically_increasing_id())
       .withColumn("job_at", lit(System.currentTimeMillis / 1000))
-      //.withColumn("date", lit("12345")) //from_unixtime($"epoch", "yyyy-MM-dd")))
       .withColumn("date", lit(from_unixtime($"epoch", "yyyy-MM-dd")))
-      //.withColumn("hour", lit(12345)) //from_unixtime($"epoch" / 1000, "HH"))
       .withColumn("hour", lit(from_unixtime($"epoch", "HH")))
       .select("symbol", "id", "job_at", "epoch", "date", "hour", "marketaverage", "prediction")
-    //      .write.format("org.apache.spark.sql.cassandra")
-    //      .options(Map("keyspace" -> "bigdata", "table" -> "batch_predict_results"))
-    //      .mode(SaveMode.Append)
-    //      .save()
+
 
     predictions.show()
     predictions.printSchema()
@@ -122,23 +111,16 @@ object BatchPredict {
       .mode(SaveMode.Append)
       .save()
 
-    //    import org.apache.spark.sql.functions._
-    //
-    //    predictions = predictions.withColumn("symbol", lit("AAPL")) // TODO hardcoded for now
-    //
-    //    //    predictions
-    //    //      .withColumn("created_at_hour", from_unixtime($"created_at"/1000, "HH"))
-    //    //      .withColumn("created_at_date", from_unixtime($"created_at"/1000, "yyyy-MM-dd"))
-    //
-    //    val dfprev = predictions.select("marketAverage", "epoch", "prediction")
-    //
-    //    dfprev.write.format("org.apache.spark.sql.cassandra")
-    //      .options(Map("keyspace" -> "bigdata", "table" -> "batch_predict_results"))
-    //      .mode(SaveMode.Append)
-    //      .save()
-
     sparkSession.stop()
+
   }
+}
 
-
+object BatchPredictApp extends App {
+  if (args.length == 2) {
+    val app = new BatchPredictApp()
+    app.run(args(0), args(1))
+  } else {
+    System.out.println("Enter host and port as arguments.")
+  }
 }
