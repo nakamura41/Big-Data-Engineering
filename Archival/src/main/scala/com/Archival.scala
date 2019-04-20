@@ -1,6 +1,4 @@
 package com
-import java.util.Calendar
-
 import org.apache.spark
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions._
@@ -31,8 +29,8 @@ object Archival {
 
     println(ten_years_earlier)
     val df_month_year = df_stockquote
-      .withColumn("month_created", from_unixtime(df_stockquote("created_at"), "MM"))
-      .withColumn("year_created", from_unixtime($"created_at", "yyyy"))
+//      .withColumn("month_created", from_unixtime(df_stockquote("created_at"), "MM"))
+//      .withColumn("year_created", from_unixtime($"created_at", "yyyy"))
       .withColumn("date_unix", from_unixtime($"created_at"))
     val df_month_year_unix = df_month_year
       .withColumn("U_TS", unix_timestamp($"date_unix"))
