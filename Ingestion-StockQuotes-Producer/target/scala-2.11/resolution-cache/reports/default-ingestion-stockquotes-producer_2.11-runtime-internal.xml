@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="ingestion-stockquotes-producer_2.11"
+		revision="0.1"
+		conf="runtime-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190420131851"/>
+	<dependencies>
+		<module organisation="com.typesafe.play" name="play-json_2.11">
+			<revision name="2.6.10" status="release" pubdate="20180818033456" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="18">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="4490" time="764" location="/home/anurag/.ivy2/cache/com.typesafe.play/play-json_2.11/ivy-2.6.10.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.typesafe.play/play-json_2.11/ivy-2.6.10.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.11/2.6.10/play-json_2.11-2.6.10.pom"/>
+				<caller organisation="default" name="ingestion-stockquotes-producer_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.6.10" rev-constraint-default="2.6.10" rev-constraint-dynamic="2.6.10" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="play-json_2.11" type="jar" ext="jar" status="successful" details="" size="1415292" time="12987" location="/home/anurag/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.6.10.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.11/2.6.10/play-json_2.11-2.6.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310">
+			<revision name="2.8.11" status="release" pubdate="20171224103007" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="23">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4534" time="763" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.8.11.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.8.11.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.8.11/jackson-datatype-jsr310-2.8.11.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jsr310" type="bundle" ext="jar" status="successful" details="" size="90059" time="913" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.8.11.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.8.11/jackson-datatype-jsr310-2.8.11.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8">
+			<revision name="2.8.11" status="release" pubdate="20171224102956" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="22">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2252" time="759" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.8.11.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.8.11.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.8.11/jackson-datatype-jdk8-2.8.11.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jdk8" type="bundle" ext="jar" status="successful" details="" size="33846" time="779" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.8.11.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.8.11/jackson-datatype-jdk8-2.8.11.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="2.9.9" status="release" pubdate="20170323213313" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.joda.org/joda-time/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="21">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="6647" time="0" location="/home/anurag/.ivy2/cache/joda-time/joda-time/ivy-2.9.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.9.9" rev-constraint-default="2.9.9" rev-constraint-dynamic="2.9.9" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="no" details="" size="634048" time="0" location="/home/anurag/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.typelevel" name="macro-compat_2.11">
+			<revision name="1.1.1" status="release" pubdate="20160215185037" resolver="public" artresolver="public" homepage="https://github.com/milessabin/macro-compat" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="20">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1915" time="768" location="/home/anurag/.ivy2/cache/org.typelevel/macro-compat_2.11/ivy-1.1.1.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.typelevel/macro-compat_2.11/ivy-1.1.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/typelevel/macro-compat_2.11/1.1.1/macro-compat_2.11-1.1.1.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="macro-compat_2.11" type="jar" ext="jar" status="successful" details="" size="3142" time="766" location="/home/anurag/.ivy2/cache/org.typelevel/macro-compat_2.11/jars/macro-compat_2.11-1.1.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/typelevel/macro-compat_2.11/1.1.1/macro-compat_2.11-1.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.play" name="play-functional_2.11">
+			<revision name="2.6.10" status="release" pubdate="20180818033431" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="1541" time="772" location="/home/anurag/.ivy2/cache/com.typesafe.play/play-functional_2.11/ivy-2.6.10.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.typesafe.play/play-functional_2.11/ivy-2.6.10.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.11/2.6.10/play-functional_2.11-2.6.10.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.6.10" rev-constraint-default="2.6.10" rev-constraint-dynamic="2.6.10" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="play-functional_2.11" type="jar" ext="jar" status="successful" details="" size="411045" time="1466" location="/home/anurag/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.6.10.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.11/2.6.10/play-functional_2.11-2.6.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaj" name="scalaj-http_2.11">
+			<revision name="2.4.1" status="release" pubdate="20180728235220" resolver="public" artresolver="public" homepage="http://github.com/scalaj/scalaj-http" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="17">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2717" time="779" location="/home/anurag/.ivy2/cache/org.scalaj/scalaj-http_2.11/ivy-2.4.1.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.scalaj/scalaj-http_2.11/ivy-2.4.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalaj/scalaj-http_2.11/2.4.1/scalaj-http_2.11-2.4.1.pom"/>
+				<caller organisation="default" name="ingestion-stockquotes-producer_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.4.1" rev-constraint-default="2.4.1" rev-constraint-dynamic="2.4.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="scalaj-http_2.11" type="jar" ext="jar" status="successful" details="" size="201641" time="2179" location="/home/anurag/.ivy2/cache/org.scalaj/scalaj-http_2.11/jars/scalaj-http_2.11-2.4.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalaj/scalaj-http_2.11/2.4.1/scalaj-http_2.11-2.4.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.11.8" status="release" pubdate="20160304232641" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="12">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2825" time="0" location="/home/anurag/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.11.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.8/scala-reflect-2.11.8.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.1.1"/>
+				<caller organisation="com.typesafe.scala-logging" name="scala-logging_2.11" conf="compile, runtime" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="3.9.0"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.6.10"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="no" details="" size="4573750" time="0" location="/home/anurag/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.8/scala-reflect-2.11.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.kafka" name="kafka_2.11">
+			<revision name="2.1.1" status="release" pubdate="20190209033204" resolver="public" artresolver="public" homepage="http://kafka.apache.org" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="1">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="16114" time="1020" location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka_2.11/ivy-2.1.1.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka_2.11/ivy-2.1.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/kafka/kafka_2.11/2.1.1/kafka_2.11-2.1.1.pom"/>
+				<caller organisation="default" name="ingestion-stockquotes-producer_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.1.1" rev-constraint-default="2.1.1" rev-constraint-dynamic="2.1.1" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="kafka_2.11" type="jar" ext="jar" status="successful" details="" size="7570405" time="11601" location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka_2.11/jars/kafka_2.11-2.1.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/kafka/kafka_2.11/2.1.1/kafka_2.11-2.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.101tec" name="zkclient">
+			<revision name="0.11" status="release" pubdate="20181023154013" resolver="public" artresolver="public" homepage="https://github.com/sgroschupf/zkclient" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="3122" time="767" location="/home/anurag/.ivy2/cache/com.101tec/zkclient/ivy-0.11.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.101tec/zkclient/ivy-0.11.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/101tec/zkclient/0.11/zkclient-0.11.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="0.11" rev-constraint-default="0.11" rev-constraint-dynamic="0.11" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="zkclient" type="jar" ext="jar" status="successful" details="" size="74626" time="1262" location="/home/anurag/.ivy2/cache/com.101tec/zkclient/jars/zkclient-0.11.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/101tec/zkclient/0.11/zkclient-0.11.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.zookeeper" name="zookeeper">
+			<revision name="3.4.13" status="release" pubdate="20180701075208" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="15">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="12178" time="782" location="/home/anurag/.ivy2/cache/org.apache.zookeeper/zookeeper/ivy-3.4.13.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.apache.zookeeper/zookeeper/ivy-3.4.13.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/zookeeper/zookeeper/3.4.13/zookeeper-3.4.13.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="3.4.13" rev-constraint-default="3.4.13" rev-constraint-dynamic="3.4.13" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="zookeeper" type="jar" ext="jar" status="successful" details="" size="906708" time="1904" location="/home/anurag/.ivy2/cache/org.apache.zookeeper/zookeeper/jars/zookeeper-3.4.13.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/zookeeper/zookeeper/3.4.13/zookeeper-3.4.13.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.yetus" name="audience-annotations">
+			<revision name="0.5.0" status="release" pubdate="20170713044838" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1857" time="774" location="/home/anurag/.ivy2/cache/org.apache.yetus/audience-annotations/ivy-0.5.0.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.apache.yetus/audience-annotations/ivy-0.5.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/yetus/audience-annotations/0.5.0/audience-annotations-0.5.0.pom"/>
+				<caller organisation="org.apache.zookeeper" name="zookeeper" conf="compile, runtime" rev="0.5.0" rev-constraint-default="0.5.0" rev-constraint-dynamic="0.5.0" callerrev="3.4.13"/>
+				<artifacts>
+					<artifact name="audience-annotations" type="jar" ext="jar" status="successful" details="" size="20437" time="705" location="/home/anurag/.ivy2/cache/org.apache.yetus/audience-annotations/jars/audience-annotations-0.5.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/yetus/audience-annotations/0.5.0/audience-annotations-0.5.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.scala-logging" name="scala-logging_2.11">
+			<revision name="3.9.0" status="release" pubdate="20180411180049" resolver="public" artresolver="public" homepage="https://github.com/lightbend/scala-logging" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="2752" time="778" location="/home/anurag/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/ivy-3.9.0.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/ivy-3.9.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/scala-logging/scala-logging_2.11/3.9.0/scala-logging_2.11-3.9.0.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="3.9.0" rev-constraint-default="3.9.0" rev-constraint-dynamic="3.9.0" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="scala-logging_2.11" type="bundle" ext="jar" status="successful" details="" size="82031" time="799" location="/home/anurag/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/bundles/scala-logging_2.11-3.9.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/scala-logging/scala-logging_2.11/3.9.0/scala-logging_2.11-3.9.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.yammer.metrics" name="metrics-core">
+			<revision name="2.2.0" status="release" pubdate="20121127041109" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
+				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="1253" time="770" location="/home/anurag/.ivy2/cache/com.yammer.metrics/metrics-core/ivy-2.2.0.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.yammer.metrics/metrics-core/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="metrics-core" type="jar" ext="jar" status="successful" details="" size="82123" time="1365" location="/home/anurag/.ivy2/cache/com.yammer.metrics/metrics-core/jars/metrics-core-2.2.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.sf.jopt-simple" name="jopt-simple">
+			<revision name="5.0.4" status="release" pubdate="20170713231239" resolver="public" artresolver="public" homepage="http://jopt-simple.github.io/jopt-simple" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
+				<license name="The MIT License" url="http://www.opensource.org/licenses/mit-license.php"/>
+				<metadata-artifact status="successful" details="" size="13968" time="784" location="/home/anurag/.ivy2/cache/net.sf.jopt-simple/jopt-simple/ivy-5.0.4.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/net.sf.jopt-simple/jopt-simple/ivy-5.0.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="5.0.4" rev-constraint-default="5.0.4" rev-constraint-dynamic="5.0.4" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="jopt-simple" type="jar" ext="jar" status="successful" details="" size="78146" time="1703" location="/home/anurag/.ivy2/cache/net.sf.jopt-simple/jopt-simple/jars/jopt-simple-5.0.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.kafka" name="kafka-clients">
+			<revision name="2.1.1" status="release" pubdate="20190209033415" resolver="public" artresolver="public" homepage="http://kafka.apache.org" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2305" time="781" location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka-clients/ivy-2.1.1.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka-clients/ivy-2.1.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/2.1.1/kafka-clients-2.1.1.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="2.1.1" rev-constraint-default="2.1.1" rev-constraint-dynamic="2.1.1" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="kafka-clients" type="jar" ext="jar" status="successful" details="" size="1893108" time="10479" location="/home/anurag/.ivy2/cache/org.apache.kafka/kafka-clients/jars/kafka-clients-2.1.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/2.1.1/kafka-clients-2.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.9.8" status="release" pubdate="20181216055940" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="6307" time="778" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.9.8.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.9.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="2.9.8" rev-constraint-default="2.9.8" rev-constraint-dynamic="2.9.8" callerrev="2.1.1"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11.1" rev-constraint-default="2.8.11.1" rev-constraint-dynamic="2.8.11.1" callerrev="2.6.10"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="successful" details="" size="1347236" time="2020" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.9.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.8.11.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.9.8"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11.1" rev-constraint-default="2.8.11.1" rev-constraint-dynamic="2.8.11.1" callerrev="2.6.10"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.8.11" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.9.8"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.9.8" status="release" pubdate="20181216051934" resolver="public" artresolver="public" homepage="https://github.com/FasterXML/jackson-core" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="9">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4060" time="799" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.9.8.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.9.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.pom"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.9.8" rev-constraint-default="2.9.8" rev-constraint-dynamic="2.9.8" callerrev="2.9.8"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<artifacts>
+					<artifact name="jackson-core" type="bundle" ext="jar" status="successful" details="" size="325619" time="1722" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.9.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.8.11" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.9.8"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.8.11"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.9.0" status="release" pubdate="20170730115340" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="8">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1941" time="1276" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.9.0.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.9.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.pom"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.9.0" rev-constraint-default="2.9.0" rev-constraint-dynamic="2.9.0" callerrev="2.9.8"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.11"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="successful" details="" size="66519" time="815" location="/home/anurag/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.9.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.8.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*)" position="-1">
+				<evicted-by rev="2.9.0"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.11"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="2.8.11" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.9.0"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.8.11" rev-constraint-default="2.8.11" rev-constraint-dynamic="2.8.11" callerrev="2.6.10"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.11"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.7.25" status="release" pubdate="20170317003632" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
+				<license name="MIT License" url="http://www.opensource.org/licenses/mit-license.php"/>
+				<metadata-artifact status="no" details="" size="5377" time="0" location="/home/anurag/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.25.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="1.7.25" rev-constraint-default="1.7.25" rev-constraint-dynamic="1.7.25" callerrev="2.1.1"/>
+				<caller organisation="com.typesafe.scala-logging" name="scala-logging_2.11" conf="compile, runtime" rev="1.7.25" rev-constraint-default="1.7.25" rev-constraint-dynamic="1.7.25" callerrev="3.9.0"/>
+				<caller organisation="org.apache.kafka" name="kafka-clients" conf="compile, runtime" rev="1.7.25" rev-constraint-default="1.7.25" rev-constraint-dynamic="1.7.25" callerrev="2.1.1"/>
+				<caller organisation="com.yammer.metrics" name="metrics-core" conf="compile, runtime" rev="1.7.2" rev-constraint-default="1.7.2" rev-constraint-dynamic="1.7.2" callerrev="2.2.0"/>
+				<caller organisation="com.101tec" name="zkclient" conf="compile, runtime" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="0.11"/>
+				<caller organisation="org.apache.zookeeper" name="zookeeper" conf="compile, runtime" rev="1.7.25" rev-constraint-default="1.7.25" rev-constraint-dynamic="1.7.25" callerrev="3.4.13"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="41203" time="0" location="/home/anurag/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.25.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.6.1" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.7.25"/>
+				<caller organisation="com.101tec" name="zkclient" conf="compile, runtime" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="0.11"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+			<revision name="1.7.2" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.7.25"/>
+				<caller organisation="com.yammer.metrics" name="metrics-core" conf="compile, runtime" rev="1.7.2" rev-constraint-default="1.7.2" rev-constraint-dynamic="1.7.2" callerrev="2.2.0"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.xerial.snappy" name="snappy-java">
+			<revision name="1.1.7.2" status="release" pubdate="20180522021930" resolver="public" artresolver="public" homepage="https://github.com/xerial/snappy-java" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="5">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="3988" time="765" location="/home/anurag/.ivy2/cache/org.xerial.snappy/snappy-java/ivy-1.1.7.2.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.xerial.snappy/snappy-java/ivy-1.1.7.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.7.2/snappy-java-1.1.7.2.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka-clients" conf="compile, runtime" rev="1.1.7.2" rev-constraint-default="1.1.7.2" rev-constraint-dynamic="1.1.7.2" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="snappy-java" type="bundle" ext="jar" status="successful" details="" size="2018686" time="3698" location="/home/anurag/.ivy2/cache/org.xerial.snappy/snappy-java/bundles/snappy-java-1.1.7.2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.7.2/snappy-java-1.1.7.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.lz4" name="lz4-java">
+			<revision name="1.5.0" status="release" pubdate="20180926012742" resolver="public" artresolver="public" homepage="https://github.com/lz4/lz4-java" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2039" time="775" location="/home/anurag/.ivy2/cache/org.lz4/lz4-java/ivy-1.5.0.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/org.lz4/lz4-java/ivy-1.5.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/lz4/lz4-java/1.5.0/lz4-java-1.5.0.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka-clients" conf="compile, runtime" rev="1.5.0" rev-constraint-default="1.5.0" rev-constraint-dynamic="1.5.0" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="lz4-java" type="jar" ext="jar" status="successful" details="" size="511547" time="1712" location="/home/anurag/.ivy2/cache/org.lz4/lz4-java/jars/lz4-java-1.5.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/lz4/lz4-java/1.5.0/lz4-java-1.5.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.github.luben" name="zstd-jni">
+			<revision name="1.3.7-1" status="release" pubdate="20181022095134" resolver="public" artresolver="public" homepage="https://github.com/luben/zstd-jni" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="BSD 2-Clause License" url="https://opensource.org/licenses/BSD-2-Clause"/>
+				<metadata-artifact status="successful" details="" size="1906" time="839" location="/home/anurag/.ivy2/cache/com.github.luben/zstd-jni/ivy-1.3.7-1.xml" searched="true" original-local-location="/home/anurag/.ivy2/cache/com.github.luben/zstd-jni/ivy-1.3.7-1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/luben/zstd-jni/1.3.7-1/zstd-jni-1.3.7-1.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka-clients" conf="compile, runtime" rev="1.3.7-1" rev-constraint-default="1.3.7-1" rev-constraint-dynamic="1.3.7-1" callerrev="2.1.1"/>
+				<artifacts>
+					<artifact name="zstd-jni" type="jar" ext="jar" status="successful" details="" size="3810541" time="8229" location="/home/anurag/.ivy2/cache/com.github.luben/zstd-jni/jars/zstd-jni-1.3.7-1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/github/luben/zstd-jni/1.3.7-1/zstd-jni-1.3.7-1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.11.8" status="release" pubdate="20160304232633" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2653" time="0" location="/home/anurag/.ivy2/cache/org.scala-lang/scala-library/ivy-2.11.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.pom"/>
+				<caller organisation="org.apache.kafka" name="kafka_2.11" conf="default, compile, runtime, master" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.1.1"/>
+				<caller organisation="org.typelevel" name="macro-compat_2.11" conf="compile, runtime" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="1.1.1"/>
+				<caller organisation="com.typesafe.scala-logging" name="scala-logging_2.11" conf="compile, runtime" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="3.9.0"/>
+				<caller organisation="default" name="ingestion-stockquotes-producer_2.11" conf="compile, runtime-internal, runtime, optional" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="0.1"/>
+				<caller organisation="org.scalaj" name="scalaj-http_2.11" conf="default, compile, runtime, master" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.4.1"/>
+				<caller organisation="com.typesafe.play" name="play-functional_2.11" conf="compile, runtime" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.6.10"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.11" conf="default, compile, runtime, master" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.6.10"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="compile, runtime" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="2.11.8"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5744974" time="0" location="/home/anurag/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
