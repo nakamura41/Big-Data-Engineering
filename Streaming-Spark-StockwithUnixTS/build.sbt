@@ -30,3 +30,5 @@ libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.5"
 
 // https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml
 libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
+
+libraryDependencies += "com.typesafe.play" % "play-json_2.10" % "2.3.10"
