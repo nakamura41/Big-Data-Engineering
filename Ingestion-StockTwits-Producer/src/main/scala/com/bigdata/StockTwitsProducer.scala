@@ -1,8 +1,9 @@
 package com.bigdata
 
+import java.text.SimpleDateFormat
 import java.util.Properties
 import java.util.HashMap
-
+import java.util.Date
 import kafka.utils.Logging
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
 import scalaj.http._
@@ -111,9 +112,12 @@ class StockTwitsProducer() extends Logging {
         val jsonUserName: String = getString(message \ "user" \ "name")
         val jsonLikesTotal: Int = getInteger(message \ "likes" \ "total")
         val jsonEntitiesSentimentBasic: String = getString(message \ "entities" \ "sentiment" \ "basic")
+        val jsonCreatedAt: String = getString(message \ "created_at")
+        val simpleDateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val jsonCreatedAtTime: Date = simpleDateFormat.parse(jsonCreatedAt)
 
         jsonMap.put("symbol", stockTicker)
-        jsonMap.put("created_at", System.currentTimeMillis)
+        jsonMap.put("created_at", jsonCreatedAtTime.getTime())
         jsonMap.put("id", jsonId)
         jsonMap.put("body", jsonBody)
         jsonMap.put("user_followers", jsonUserFollowers)
