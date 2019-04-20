@@ -54,7 +54,7 @@ if __name__ == "__main__":
             data = get_stock_details_for_minute(stock_details, e)
             producer.send(TOPIC_NAME, value=data)
             print("Pushed for offset: {0}".format(e))
-            sleep(10)
+            sleep(2)
     else:
         print("No stock details")
     # print(stock_details)
