@@ -92,7 +92,7 @@ class SparkStreamingWithUnixTS() {
       }).foreachRDD(rdd => rdd.foreach(json =>
       connector.withSessionDo(session => {
         val jsonObj = parse(json)
-//        System.out.println(json)
+        //        System.out.println(json)
 
         val jsonDate = (jsonObj \ "date").values
         val jsonMinute = (jsonObj \ "minute").values
@@ -121,9 +121,9 @@ class SparkStreamingWithUnixTS() {
         val JsonMarketChangeTime = (jsonObj \ "marketChangeOverTime").values
 
 
-//        System.out.println(jsonDate)
-//        System.out.println(jsonMinute)
-//        System.out.println(jsonHigh)
+        //        System.out.println(jsonDate)
+        //        System.out.println(jsonMinute)
+        //        System.out.println(jsonHigh)
         val sourceFormat = DateTimeFormat.forPattern("yyyyMMddHH:mm")
         val targetFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm")
         //val prepared = session.prepare("INSERT INTO bigdata.stock_quote_batch JSON '" + json.toString + "'")
@@ -170,7 +170,7 @@ class SparkStreamingWithUnixTS() {
         val prepared = session.prepare(s"INSERT INTO bigdata.stock_quote_batch JSON '$jsonString'")
         session.execute(prepared.bind())
       }
-    )))
+      )))
 
     // Start the computation
     ssc.start()
