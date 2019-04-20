@@ -64,8 +64,8 @@ class SparkStreamingWithUnixTS() {
 
     StreamingExample.setStreamingLogLevels()
 
-//    val sparkConf = new SparkConf().setMaster("local[*]").set("spark.cassandra.connection.host", "18.136.251.110")
-    val sparkConf = new SparkConf().set("spark.cassandra.connection.host", "18.136.251.110")
+    val sparkConf = new SparkConf().setMaster("local[*]").set("spark.cassandra.connection.host", "18.136.251.110")
+      //    val sparkConf = new SparkConf().set("spark.cassandra.connection.host", "18.136.251.110")
       .set("spark.cassandra.connection.port", "9042").setAppName("SparkStreamingWithUnixTS")
 
     val ssc = new StreamingContext(sparkConf, Seconds(1))
