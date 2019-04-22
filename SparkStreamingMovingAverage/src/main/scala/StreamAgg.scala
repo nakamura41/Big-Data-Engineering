@@ -20,6 +20,7 @@ import org.apache.spark.sql.functions.from_unixtime
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.{SaveMode, SparkSession}
+import org.apache.spark.sql.types.IntegerType
 
 object StreamAgg {
   def main(args: Array[String]): Unit = {
@@ -30,7 +31,7 @@ object StreamAgg {
 
     val conf = new SparkConf().setMaster("local[4]").setAppName("kafkar")
 
-    val ssc = new StreamingContext(conf,Seconds(2))
+    val ssc = new StreamingContext(conf,Seconds(10))
 
 
 
@@ -43,23 +44,28 @@ object StreamAgg {
       "enable.auto.commit" -> (false: java.lang.Boolean)
     )
 
+
     val topics = Array("stockquotes")
     val stream = KafkaUtils.createDirectStream[String, String](
       ssc,
       PreferConsistent,
       Subscribe[String, String](topics, kafkaParams)
     )
-    //stream.map(record => parse(record.value)).print()
+    stream.map(record => (record.value)).print()
 
+    val toDouble = udf[Double, String]( _.toDouble)
     stream.foreachRDD(rdd =>
       if (!rdd.isEmpty()) {
         val sqlContext = SQLContext.getOrCreate(rdd.sparkContext)
         val topicValueStrings = rdd.map(record => (record.value()).toString)
         val df = sqlContext.read.json(topicValueStrings)
-        val movAvg = df.withColumn("movingAverage", avg(df("marketAverage"))
-          .over(Window.partitionBy("date").rowsBetween(0,-4)) )
 
-        movAvg.select("movingAverage").show()
+        val agg_stats =  df.groupBy("date").avg("marketAverage","marketVolume","marketHigh","marketLow","marketNumberOfTrades")
+        //val df2 = df.withColumn("marketAverage", toDouble(df("marketAverage")))
+//        val movAvg = df.withColumn("movingAverage", avg(toDouble(df("marketAverage")))
+//          .over(Window.partitionBy("minute").rowsBetween(-1,1)) )
+//        // println(movAvg.count())
+        agg_stats.show()
       })
     ssc.start()
     ssc.awaitTermination()

@@ -24,3 +24,10 @@ libraryDependencies += "org.json4s" %% "json4s-native" % "3.6.5"
 // https://mvnrepository.com/artifact/org.json4s/json4s-jackson
 libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.5"
 
+// https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
+
+excludeDependencies ++= Seq(
+  // commons-logging is replaced by jcl-over-slf4j
+  ExclusionRule("net.jpountz.lz4")
+)
