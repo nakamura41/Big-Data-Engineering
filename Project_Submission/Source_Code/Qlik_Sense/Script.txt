@@ -1,0 +1,124 @@
+LIB CONNECT TO 'bigdatacass';
+
+Predict:
+LOAD "job_at"		AS Predict_job_at,
+    id				AS Predict_id,
+    "date",
+    epoch,
+    "hour",
+    marketaverage,
+    prediction,
+    "symbol";
+SQL SELECT "job_at",
+    id,
+    "date",
+    epoch,
+    "hour",
+    marketaverage,
+    prediction,
+    "symbol"
+FROM Cassandra.bigdata."batch_predict_results";
+
+[Latest_Job_Predict]:
+Join Load
+Max(Predict_job_at)	AS Max_Job
+resident Predict
+;
+
+Predict_Final:
+NoConcatenate Load
+*
+resident Predict
+WHERE Predict_job_at=Max_Job
+;
+Drop table Predict;
+
+[Twits]:
+LOAD "job_at"		AS Twits_job_at,
+    id				AS Twits_id,
+    "date",
+    "entities_sentiment_basic",
+    "hour",
+    "num_tweets",
+    "symbol",
+    "total_followers",
+    "total_likes"
+    ;
+SQL SELECT "job_at",
+    id,
+    "date",
+    "entities_sentiment_basic",
+    "hour",
+    "num_tweets",
+    "symbol",
+    "total_followers",
+    "total_likes"
+FROM Cassandra.bigdata."stock_twits_aggregate"
+;
+
+[Latest_Job_Twits]:
+Join Load
+Max(Twits_job_at)	AS Max_Job
+resident Twits
+;
+
+Twits_Final:
+NoConcatenate Load
+*
+resident Twits
+WHERE Twits_job_at=Max_Job and len(entities_sentiment_basic)>0
+;
+
+Drop table Twits;
+
+Quote:
+LOAD "job_at"		AS Quote_job_at,
+    id				AS Quote_id,
+    "date",
+    "hour",
+    "market_average_sum",
+    "market_no_of_trades_sum",
+    "market_volume_sum",
+    "num_of_transactions",
+    "symbol",
+    ;
+SQL SELECT "job_at",
+    id,
+    "date",
+    "hour",
+    "market_average_sum",
+    "market_no_of_trades_sum",
+    "market_volume_sum",
+    "num_of_transactions",
+    "symbol"
+FROM Cassandra.bigdata."stock_quote_aggregates";
+
+[Latest_Job_Quote]:
+Join Load
+Max(Quote_job_at)	AS Max_Job
+resident Quote
+;
+
+Quote_Final:
+NoConcatenate Load
+*
+resident Quote
+WHERE Quote_job_at=Max_Job
+;
+
+Drop table Quote;
+
+[Fact]:
+NoConcatenate Load
+*
+Resident Predict_Final;
+
+Join load
+*
+resident Twits_Final;
+
+Join Load
+*
+resident Quote_Final;
+
+drop tables Predict_Final,Twits_Final,Quote_Final;
