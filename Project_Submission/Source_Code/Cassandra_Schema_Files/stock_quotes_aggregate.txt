@@ -1,0 +1,11 @@
+CREATE TABLE bigdata.stock_quote_aggregates(
+      symbol text,
+      job_at double,
+      date text,
+      hour int,
+      num_of_transactions int,
+      market_volume_sum double,
+      market_average_sum double,
+      market_no_of_trades_sum double,
+      PRIMARY KEY (job_at, symbol)
+      );

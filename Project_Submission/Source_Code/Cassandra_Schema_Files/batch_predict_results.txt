@@ -1,0 +1,11 @@
+CREATE TABLE bigdata.batch_predict_results (
+      id bigint,
+      symbol text, 
+      job_at bigint,
+      epoch bigint,
+      date text, 
+      hour int,
+      marketaverage double,
+      prediction double,
+      PRIMARY KEY (job_at, id)
+);

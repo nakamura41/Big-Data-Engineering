@@ -1,0 +1,12 @@
+CREATE TABLE bigdata.stock_twits (
+  symbol text,
+  created_at double,
+  id double,
+  body text,
+  user_followers double,
+  user_username text,
+  user_name text,
+  likes_total double,
+  entities_sentiment_basic text	,
+  PRIMARY KEY (symbol, created_at)
+);

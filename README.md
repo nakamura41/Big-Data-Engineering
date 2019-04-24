@@ -1,16 +1,7 @@
 # Big Data Engineering
 
-## Instruction
-[Start Kafka](https://github.com/nakamura41/EB5001-Big-Data-Engineering/blob/master/Kafka.md)
+![Project Architecture](https://github.com/lppier/Big-Data-Engineering/blob/master/architecture.png)
 
-### Example build.sbt configuration file (that works on BEAD vm - SPARK2.2)  
-```
-name := "TestScala"
+Learning Journal Report: https://github.com/lppier/Big-Data-Engineering/blob/master/Project_Submission/Team01-EB5001-Learning%20Journal.pdf
 
-version := "0.1"
-
-scalaVersion := "2.11.12"
-
-libraryDependencies += "org.apache.spark" %% "spark-core" % "2.2.3"
-```
-Command to submit spark job : spark2-submit --class HelloScala --master local ./testscala_2.11-0.1.jar
+Setup Guide: https://github.com/lppier/Big-Data-Engineering/blob/master/Project_Submission/Team01-EB5001-Stock%20Price%20analytics%20using%20big%20data%20installation%20and%20setup%20guide.pdf
